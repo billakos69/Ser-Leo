@@ -1,0 +1,82 @@
+%PDF-1.4
+%����
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [3 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 1020 >>
+stream
+BT /F1 24 Tf 50 780 Td (Serleo - Τεκμηρίωση Έργου) Tj ET
+BT /F1 12 Tf 50 760 Td (Συγγραφέας: ____________________) Tj ET
+BT /F1 12 Tf 50 745 Td (Ημερομηνία: ____________________) Tj ET
+BT /F1 14 Tf 50 720 Td (Πίνακας Περιεχομένων) Tj ET
+BT /F1 10 Tf 50 700 Td (1. Εισαγωγή) Tj ET
+BT /F1 10 Tf 50 686 Td (2. Συνοπτική Περιγραφή Συστήματος) Tj ET
+BT /F1 10 Tf 50 672 Td (3. Τεχνολογίες & Αρχιτεκτονική) Tj ET
+BT /F1 10 Tf 50 658 Td (4. Ανάλυση Σελίδων) Tj ET
+BT /F1 10 Tf 50 644 Td (5. Ροή Πλοήγησης) Tj ET
+BT /F1 10 Tf 50 630 Td (6. Βάση Δεδομένων) Tj ET
+BT /F1 10 Tf 50 616 Td (7. Βασικές Λειτουργίες) Tj ET
+BT /F1 10 Tf 50 602 Td (8. Συμπεράσματα) Tj ET
+
+BT /F1 12 Tf 50 570 Td (1. Εισαγωγή) Tj ET
+BT /F1 10 Tf 50 554 Td (Σκοπός της ιστοσελίδας:) Tj ET
+BT /F1 9 Tf 60 540 Td (Η εφαρμογή λειτουργεί ως μικτή πλατφόρμα διαχείρισης ποδοσφαιρικών/αθλητικών αγώνων, ενη
+μερωτικού περιεχομένου, ηλεκτρονικού καταστήματος και πώλησης εισιτηρίων.) Tj ET
+
+BT /F1 12 Tf 50 510 Td (2. System Overview) Tj ET
+BT /F1 10 Tf 50 494 Td (Τεχνολογίες:) Tj ET
+BT /F1 9 Tf 60 480 Td (PHP, MySQL, HTML, CSS, JavaScript, PHPMailer, TCPDF) Tj ET
+
+BT /F1 12 Tf 50 450 Td (3. Page Analysis - Επιλεγμένα σημεία) Tj ET
+BT /F1 10 Tf 50 434 Td (Παραδείγματα αρχείων:) Tj ET
+BT /F1 9 Tf 60 420 Td (login.php - Σελίδα εισόδου: έλεγχος credentials, session management.) Tj ET
+BT /F1 9 Tf 60 406 Td (signup.php - Εγγραφή: password_hash, insert στο users.) Tj ET
+BT /F1 9 Tf 60 392 Td (admin_panel.php - Διαχείριση: CRUD για products,news,players,teams,matches,seats.) Tj ET
+BT /F1 9 Tf 60 378 Td (shop.php / product.php / cart.php / checkout.php - Shop flow & PDF ticket generation.) Tj ET
+
+BT /F1 12 Tf 50 344 Td (4. Navigation Flow) Tj ET
+BT /F1 9 Tf 60 330 Td (index.php -> news.php / shop.php / league.php / team.php / tickets.php) Tj ET
+BT /F1 9 Tf 60 316 Td (shop.php -> product.php -> cart.php -> checkout.php -> ticket_mail.php (PDF)) Tj ET
+
+BT /F1 12 Tf 50 282 Td (5. Βάση Δεδομένων - Κύριοι πίνακες) Tj ET
+BT /F1 9 Tf 60 268 Td (users, products, product_options, product_promotions, discounts, discount_usage, favorite, news, vote_usage, teams, players, player_strengths, matches, match_stats, match_lineup, match_events, seats, tick, pfp_images) Tj ET
+
+BT /F1 12 Tf 50 236 Td (6. Key Functionalities) Tj ET
+BT /F1 9 Tf 60 222 Td (Authentication: signup/login/logout, OAuth Google/GitHub) Tj ET
+BT /F1 9 Tf 60 208 Td (Cart & Checkout: session-based cart, discounts, PDF tickets via TCPDF, email via PHPMailer) Tj ET
+BT /F1 9 Tf 60 194 Td (Admin CRUD: edit_product/edit_team/edit_match/edit_match_stats/edit_news/edit_seat) Tj ET
+
+BT /F1 12 Tf 50 160 Td (7. Σημεία Προσοχής - Προτεινόμενες βελτιώσεις) Tj ET
+BT /F1 9 Tf 60 146 Td (1) Ολοκληρωμένη χρήση prepared statements για αποφυγή SQL injection.) Tj ET
+BT /F1 9 Tf 60 132 Td (2) Προσθήκη CSRF tokens σε φόρμες, έλεγχος user role για admin περιοχές.) Tj ET
+BT /F1 9 Tf 60 118 Td (3) Έλεγχος uploads (mime, μέγεθος) και escaping output για XSS προστασία.) Tj ET
+
+BT /F1 12 Tf 50 84 Td (8. Συμπέρασμα) Tj ET
+BT /F1 10 Tf 50 68 Td (Το project αποτελεί ολοκληρωμένη εφαρμογή με δυνατότητες e-commerce και διαχείρισης αγώνων. Για
+την παράδοση ως πανεπιστημιακή εργασία προτείνεται συμπερίληψη SQL schema, screenshots και demo credentials.) Tj ET
+
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000010 00000 n 
+0000000061 00000 n 
+0000000120 00000 n 
+0000000261 00000 n 
+0000000326 00000 n 
+trailer
+<< /Root 1 0 R /Size 6 >>
+startxref
+1402
+%%EOF

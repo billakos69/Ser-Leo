@@ -1,0 +1,95 @@
+/* Γενικό layout */
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b0b;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #1a1a1a;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+h1 {
+    text-align: center;
+    color: #bc8a31;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"], 
+input[type="number"], 
+input[type="submit"], 
+textarea, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 15px;
+    background: #222;
+    color: #fff;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+input[type="submit"] {
+    background: #bc8a31;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background: #ffad31;
+}
+
+.msg {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #222;
+    border-left: 4px solid #bc8a31;
+}
+
+a.back {
+    color: #dfc69f;
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+a.back:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    input[type="text"], input[type="number"], textarea {
+        padding: 8px;
+    }
+
+    input[type="submit"] {
+        padding: 10px;
+    }
+}

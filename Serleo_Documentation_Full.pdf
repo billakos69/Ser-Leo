@@ -1,0 +1,117 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 3 /Kids [3 0 R 6 0 R 9 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 730 >>
+stream
+BT /F1 24 Tf 50 780 Td (Serleo - Τεκμηρίωση Έργου) Tj ET
+BT /F1 12 Tf 50 750 Td (Συγγραφέας: ____________________) Tj ET
+BT /F1 12 Tf 50 735 Td (Ημερομηνία: ____________________) Tj ET
+BT /F1 14 Tf 50 705 Td (Πίνακας Περιεχομένων) Tj ET
+BT /F1 10 Tf 60 685 Td (1. Εισαγωγή........................................... 3) Tj ET
+BT /F1 10 Tf 60 670 Td (2. Συνοπτική Περιγραφή Συστήματος........... 4) Tj ET
+BT /F1 10 Tf 60 655 Td (3. Τεχνολογίες & Αρχιτεκτονική................. 5) Tj ET
+BT /F1 10 Tf 60 640 Td (4. Ανάλυση Σελίδων (σελίδα προς σελίδα)...... 6) Tj ET
+BT /F1 10 Tf 60 625 Td (5. Ροή Πλοήγησης.................................. 25) Tj ET
+BT /F1 10 Tf 60 610 Td (6. Βάση Δεδομένων................................ 27) Tj ET
+BT /F1 10 Tf 60 595 Td (7. Βασικές Λειτουργίες............................ 31) Tj ET
+BT /F1 10 Tf 60 580 Td (8. Συμπεράσματα.................................. 36) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1600 >>
+stream
+BT /F1 14 Tf 50 800 Td (1. Εισαγωγή) Tj ET
+BT /F1 10 Tf 50 780 Td (Σκοπός της ιστοσελίδας) Tj ET
+BT /F1 9 Tf 60 760 Td (Η εφαρμογή λειτουργεί ως μικτή πλατφόρμα διαχείρισης ποδοσφαιρικών/αθλητικών αγώνων, ενημερωτικού περιεχομένου, ηλεκτρονικού καταστήματος και πώλησης εισιτηρίων. Στόχος της είναι να προσφέρει σε διαχειριστές και χρήστες ένα σημείο διαχείρισης περιεχομένου, προϊόντων και εισιτηρίων.) Tj ET
+
+BT /F1 10 Tf 50 720 Td (Γενική περιγραφή) Tj ET
+BT /F1 9 Tf 60 700 Td (Το σύστημα είναι μονολιθικό PHP με χρήση MySQL για αποθήκευση. Περιλαμβάνει module για authentication, admin panel (CRUD), shop, tickets, και στατιστικά αγώνων.) Tj ET
+
+BT /F1 10 Tf 50 660 Td (2. System Overview) Tj ET
+BT /F1 10 Tf 60 640 Td (Τεχνολογίες που χρησιμοποιούνται:) Tj ET
+BT /F1 9 Tf 70 620 Td (• Backend: PHP (mysqli, PDO)) Tj ET
+BT /F1 9 Tf 70 606 Td (• Database: MySQL) Tj ET
+BT /F1 9 Tf 70 592 Td (• Frontend: HTML, CSS, JavaScript) Tj ET
+BT /F1 9 Tf 70 578 Td (• Libraries: PHPMailer, TCPDF) Tj ET
+
+BT /F1 10 Tf 50 540 Td (Γενική Αρχιτεκτονική) Tj ET
+BT /F1 9 Tf 60 520 Td (Ο κώδικας είναι χωρισμένος σε αρχεία PHP για κάθε σελίδα. Τα κοινά settings βρίσκονται στο config.php το οποίο δημιουργεί συνδέσεις $conn, $pdo και $mysqli προς τη βάση.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 3200 >>
+stream
+BT /F1 14 Tf 50 800 Td (4. Page Analysis (Εργαλεία & Σελίδες)) Tj ET
+BT /F1 12 Tf 50 780 Td (Α. Authentication & Account) Tj ET
+BT /F1 10 Tf 50 760 Td (login.php) Tj ET
+BT /F1 9 Tf 60 744 Td (Σκοπός: Σελίδα εισόδου χρηστών. Ελέγχει τα credentials, χρησιμοποιεί prepared statements και password_verify(). Σε επιτυχή σύνδεση δημιουργεί session.) Tj ET
+BT /F1 10 Tf 50 720 Td (signup.php) Tj ET
+BT /F1 9 Tf 60 704 Td (Σκοπός: Εγγραφή νέου χρήστη. Ελέγχει διπλότυπα email, κάνει password_hash και INSERT στον πίνακα users.) Tj ET
+BT /F1 10 Tf 50 680 Td (account.php) Tj ET
+BT /F1 9 Tf 60 664 Td (Σκοπός: Σελίδα διαχείρισης λογαριασμού. Δίνει τη δυνατότητα αλλαγής username, email (με OTP), επιλογή avatar, διαγραφή λογαριασμού και προβολή favorites.) Tj ET
+
+BT /F1 12 Tf 50 620 Td (Β. Admin / Edit) Tj ET
+BT /F1 10 Tf 50 600 Td (admin_panel.php) Tj ET
+BT /F1 9 Tf 60 584 Td (Σκοπός: Κεντρικό πάνελ διαχείρισης για προϊόντα, ειδήσεις, παίκτες, ομάδες, αγώνες, θέσεις και κουπόνια. Παρέχει εργαλεία διαγραφής και μαζικών ενεργειών.) Tj ET
+BT /F1 10 Tf 50 548 Td (edit_product.php / edit_product_options.php) Tj ET
+BT /F1 9 Tf 60 532 Td (Διαχείριση προϊόντων και επιλογών προ��όντων. Χρήση prepared statements για INSERT/UPDATE.) Tj ET
+BT /F1 10 Tf 50 500 Td (edit_match.php / edit_player.php / edit_team.php) Tj ET
+BT /F1 9 Tf 60 484 Td (Δημιουργία και επεξεργασία αγώνων, παικτών και ομάδων. Για τους παίκτες υπάρχει επιπλέον πίνακας player_strengths.) Tj ET
+
+BT /F1 12 Tf 50 440 Td (Γ. Shop / Cart / Checkout) Tj ET
+BT /F1 10 Tf 50 420 Td (shop.php / product.php) Tj ET
+BT /F1 9 Tf 60 404 Td (Προβολή προϊόντων, εφαρμογή προωθητικών ενεργειών μέσω product_promotions (FIND_IN_SET), φόρτωση favorites για logged-in χρήστες.) Tj ET
+BT /F1 10 Tf 50 372 Td (cart.php / checkout.php) Tj ET
+BT /F1 9 Tf 60 356 Td (Cart βασισμένο σε session. Checkout ελέγχει discount codes (check_discount.php), δημιουργεί PDF εισιτηρίου (TCPDF) και αποστέλλει email (PHPMailer). Ενημερώνει seats όταν αγοράζονται θέσεις.) Tj ET
+
+BT /F1 12 Tf 50 316 Td (Δ. News / Voting) Tj ET
+BT /F1 10 Tf 50 296 Td (news.php / news_detail.php / vote_ajax.php) Tj ET
+BT /F1 9 Tf 60 280 Td (Λίστα ειδήσεων, σελίδα λεπτομέρειας με δυνατότητα like/dislike. vote_ajax.php καταγράφει ψήφους στον πίνακα vote_usage και ενημερώνει counters στη news.) Tj ET
+
+BT /F1 12 Tf 50 240 Td (Ε. Matches / Stats / Tickets) Tj ET
+BT /F1 10 Tf 50 220 Td (edit_match_stats.php / more_gamestats.php) Tj ET
+BT /F1 9 Tf 60 204 Td (Διαχείριση match_stats, match_lineup και match_events. Υπάρχει λογική για εισαγωγή/ενημέρωση πολλών πεδίων με δυναμικά prepared statements.) Tj ET
+BT /F1 10 Tf 50 176 Td (tickets.php / ticket_mail.php / edit_seat.php) Tj ET
+BT /F1 9 Tf 60 160 Td (Διαχείριση εισιτηρίων και θέσεων. Κατά την κράτηση/πώληση εισιτηρίου γίνεται UPDATE στο seats.available και δημιουργείται PDF εισιτήριο που αποστέλλεται μέσω email.) Tj ET
+
+BT /F1 10 Tf 50 120 Td (Σημαντικά Σημεία Κώδικα / Security) Tj ET
+BT /F1 9 Tf 60 104 Td (• Χρήση prepared statements σε πολλά σημεία, αλλά υπάρχουν και queries με άμεση εισαγωγή μεταβλητών — απαιτείται έλεγχος.) Tj ET
+BT /F1 9 Tf 60 88 Td (• Συνιστάται προσθήκη CSRF tokens, έλεγχος ρόλων admin και έλεγχος uploads.) Tj ET
+endstream
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000010 00000 n 
+0000000061 00000 n 
+0000000127 00000 n 
+0000000296 00000 n 
+0000000361 00000 n 
+0000000430 00000 n 
+0000002059 00000 n 
+0000003770 00000 n 
+0000003845 00000 n 
+0000007072 00000 n 
+trailer
+<< /Root 1 0 R /Size 11 >>
+startxref
+7253
+%%EOF

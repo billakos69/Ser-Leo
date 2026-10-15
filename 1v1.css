@@ -1,0 +1,977 @@
+
+#main-content {display:flex; flex-direction:column; align-items:center; width:100%; margin-top:20px;}
+#scoreboard {background:#fff; color:#0b2a33; padding:10px 16px; border-radius:12px; font-weight:bold; text-align:center; width:200px;}
+.quiz-board {display:flex; flex-direction:column; gap:12px; padding:20px; background:#0e3d4a; border-radius:16px; width:90%; max-width:900px;}
+.quiz-row {display:flex; gap:12px; justify-content:center;}
+.quiz-item {flex:1; min-width:100px; height:72px; display:flex; align-items:center; gap:12px; color:#fff; border-radius:12px; padding:0 16px; cursor:pointer; border:1px solid rgba(255,255,255,.06); transition:.2s; position:relative; justify-content:center; text-align:center;}
+.quiz-item img {width:34px; height:34px; border-radius:50%; object-fit:cover;}
+.quiz-item .title {font-weight:700;}
+.quiz-item span.badge {position:absolute; right:10px; top:50%; transform:translateY(-50%); background:#f1f5f9; color:#0b2a33; font-weight:800; padding:6px 10px; border-radius:10px;}
+@media(max-width:720px){.quiz-row{flex-direction:column; align-items:center;}.quiz-item{width:92vw;}}
+#quizModal,#fiftyModal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.7); align-items:center; justify-content:center; z-index:1002;}
+#quizModal .modal-content,#fiftyModal .modal-content {background:#fff; padding:20px; border-radius:12px; width:90%; max-width:600px; text-align:center; animation:fadeIn .3s ease;}
+#quizModal input {width:100%; padding:10px; margin:10px 0; font-size:16px;}
+#fiftyModal button,#helpBtns button,#quizModal button {margin:5px; padding:8px 12px; border:none; border-radius:8px; background:#0b2a33; color:#fff; cursor:pointer; transition:.2s;}
+#fiftyModal button:hover,#helpBtns button:hover,#quizModal button:hover{background:#115654;}
+#feedback{margin-top:10px; font-weight:bold; color:#0b2a33;}
+#qImage {
+    display: block;
+    margin: 20px auto;
+    max-width: 400px;  /* μεγαλύτερο μέγεθος */
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+#top5Container{
+  width:600px;
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  color:#000;
+  display:none; /* Κρυφό στην αρχή */
+}
+#top5Question{
+  font-size:26px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+#top5Input:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #ccc;
+}
+
+#top5Input{
+  width:80%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  margin-bottom:15px;
+  font-size:16px;
+}
+.answer-slot{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:bold;
+  text-align:left;
+  padding-left:20px;
+  box-sizing:border-box;
+  transition:0.3s;
+}
+.green{background:#2ecc71;color:white;}
+.red{background:#e74c3c;color:white;}
+.revealed{transform:scale(1.02);}
+.shake{animation:shake 0.3s;}
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-5px);}
+  50%{transform:translateX(5px);}
+  75%{transform:translateX(-5px);}
+  100%{transform:translateX(0);}
+}
+#submitBtn,#onePointBtn{
+  padding:10px 20px;
+  margin:5px;
+  border:none;
+  border-radius:6px;
+  background:#2c3e50;
+  color:#fff;
+  cursor:pointer;
+}
+#onePointBtn{display:none;background:#f39c12;}
+#acDropdown{
+  position:absolute;
+  top:38px;
+  left:0;
+  width:60%;
+  background:#0b1220;
+  border:1px solid #22d3ee;
+  border-radius:6px;
+  color:#fff;
+  max-height:180px;
+  overflow-y:auto;
+  z-index:1000;
+}
+#acDropdown div:hover{background:rgba(34,211,238,0.2);cursor:pointer;}
+
+#top5Container{
+  width:600px;
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  color:#000;
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:2000;
+  box-shadow:0 8px 25px rgba(0,0,0,0.4);
+}
+#top5Question{
+  font-size:26px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+#top5Input{
+  width:80%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  margin-bottom:15px;
+  font-size:16px;
+}
+.answer-slot{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:bold;
+  text-align:left;
+  padding-left:20px;
+  box-sizing:border-box;
+  transition:0.3s;
+}
+.green{background:#2ecc71;color:white;}
+.red{background:#e74c3c;color:white;}
+.revealed{transform:scale(1.02);}
+.shake{animation:shake 0.3s;}
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-5px);}
+  50%{transform:translateX(5px);}
+  75%{transform:translateX(-5px);}
+  100%{transform:translateX(0);}
+}
+#submitBtn,#onePointBtn{
+  padding:10px 20px;
+  margin:5px;
+  border:none;
+  border-radius:6px;
+  background:#2c3e50;
+  color:#fff;
+  cursor:pointer;
+}
+#onePointBtn{display:none;background:#f39c12;}
+#acDropdown{
+  position:absolute;
+  top:38px;
+  left:0;
+  width:60%;
+  background:#0b1220;
+  border-radius:6px;
+  color:#fff;
+  max-height:180px;
+  overflow-y:auto;
+  z-index:1000;
+}
+#acDropdown div:hover{background:rgba(34,211,238,0.2);cursor:pointer;}
+
+@keyframes fadeIn{from{opacity:0; transform:scale(0.95);} to{opacity:1; transform:scale(1);}}
+/* ====== CSS VARIABLES (ΧΡΩΜΑΤΑ & ΘΕΜΑ) ====== */
+:root {
+  --bg-dark: #111;
+  --bg-darker: #0a0a0a;
+  --text: #ffffff;
+  --accent: #000000;
+  --accent-hover: #00cccc;
+  --card-bg: #1b1b1b;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* ====== GLOBAL ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  user-select: none; /* αν θες να επιτρέπεται η επιλογή κειμένου, αφαίρεσέ το */
+}
+
+
+
+/* ====== NAVBAR ====== */
+nav {
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  padding: 0 50px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logout-msg {
+    text-align: center;
+    color: #0baa93; /* ή #ff8431 / #9fd9df */
+    font-weight: bold;
+    margin: 20px 0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.7);
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+
+
+nav:after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+nav .logo {
+  float: left;
+  color: #00ffff;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 70px;
+}
+
+nav ul {
+  float: right;
+  list-style: none;
+  position: relative;
+}
+
+nav ul li {
+  display: inline-block;
+  position: relative;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 70px;
+  padding: 8px 15px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+}
+
+/* ====== DROPDOWN ====== */
+nav ul ul {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  background: rgba(0,0,0,0.9);
+  padding: 10px 0;
+  border-radius: 8px;
+  display: none;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+nav ul li:hover > ul {
+  display: block;
+  opacity: 1;
+}
+
+nav ul ul li {
+  width: 200px;
+}
+
+nav ul ul li a {
+  line-height: 40px;
+  display: block;
+  padding-left: 20px;
+}
+
+nav ul ul li a:hover {
+  background: #111;
+}
+
+/* ====== USER MENU (ανθρωπάκι) ====== */
+ .user-menu i {
+  font-size: 28px; /* από 20-22px το πάμε μεγαλύτερο */
+  line-height: 70px; /* να ευθυγραμμίζεται στο navbar */
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s;
+}
+
+.user-menu i:hover {
+  color: cyan;
+}
+
+
+
+.user-menu {
+  position: relative;
+  display: inline-block; /* να κολλάει στο εικονίδιο */
+  
+}
+
+
+.user-menu .dropdown {
+  position: absolute;
+  top: 70px;       /* κάτω από το ανθρωπάκι */
+  right: 0;        /* ευθυγράμμιση δεξιά */
+  left: auto;      /* ακύρωση του left από το γενικό */
+  background: #1b1b1b;
+  border: 1px solid cyan;
+  border-radius: 8px;
+  min-width: 150px;
+  display: none;
+  z-index: 999;
+  
+}
+
+.user-menu:hover .dropdown,
+.user-menu .dropdown:hover {
+  display: block;
+}
+
+.user-menu .dropdown li a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.user-menu .dropdown li a:hover {
+  background: cyan;
+  color: #000;
+}
+
+.flash-message {
+    background: #0baa93;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin: 10px auto;
+    max-width: 600px;
+    font-weight: bold;
+}
+
+
+#top5Container{
+  width:600px;
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  color:#000;
+  display:none; /* Κρυφό στην αρχή */
+}
+#top5Question{
+  font-size:26px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+#top5Input:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #ccc;
+}
+
+#top5Input{
+  width:80%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  margin-bottom:15px;
+  font-size:16px;
+}
+.answer-slot{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:bold;
+  text-align:left;
+  padding-left:20px;
+  box-sizing:border-box;
+  transition:0.3s;
+}
+.green{background:#2ecc71;color:white;}
+.red{background:#e74c3c;color:white;}
+.revealed{transform:scale(1.02);}
+.shake{animation:shake 0.3s;}
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-5px);}
+  50%{transform:translateX(5px);}
+  75%{transform:translateX(-5px);}
+  100%{transform:translateX(0);}
+}
+#submitBtn,#onePointBtn{
+  padding:10px 20px;
+  margin:5px;
+  border:none;
+  border-radius:6px;
+  background:#2c3e50;
+  color:#fff;
+  cursor:pointer;
+}
+#onePointBtn{display:none;background:#f39c12;}
+#acDropdown{
+  position:absolute;
+  top:38px;
+  left:0;
+  width:60%;
+  background:#0b1220;
+  border:1px solid #22d3ee;
+  border-radius:6px;
+  color:#fff;
+  max-height:180px;
+  overflow-y:auto;
+  z-index:1000;
+}
+#acDropdown div:hover{background:rgba(34,211,238,0.2);cursor:pointer;}
+
+
+
+
+/* Footer */
+footer {
+  flex-shrink: 0; /* Να μην συρρικνώνεται */
+  background: var(--bg-dark);
+  color: #aaa;
+  text-align: center;
+  padding: 30px 15px;
+  margin-top: auto; /* σπρώχνει το footer κάτω */
+}
+
+footer a { color: var(--accent); margin: 0 10px; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ====== LOGO ΕΙΚΟΝΑ (διόρθωση SCSS nesting) ====== */
+.hero .logo img {
+  max-width: 200px;  /* δεν ξεπερνάει τα 200px */
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b2a33;
+    margin: 0;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#scoreboard {
+    background: #fff;
+    color: #0b2a33;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-align: center;
+    width: 200px;
+}
+
+.quiz-board {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    background: #0e3d4a;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 900px;
+}
+
+.quiz-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.quiz-item {
+    flex: 1;
+    min-width: 100px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    border-radius: 12px;
+    padding: 0 16px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: .2s;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+}
+
+.quiz-item img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.quiz-item .title {
+    font-weight: 700;
+}
+
+.quiz-item span.badge {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #f1f5f9;
+    color: #0b2a33;
+    font-weight: 800;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+@media(max-width:720px){
+    .quiz-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .quiz-item {
+        width: 92vw;
+    }
+}
+
+#quizModal,
+#fiftyModal,
+#top5Container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1005;
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+    flex-direction: column;
+    text-align: center;
+    pointer-events: auto;
+}
+
+/* Μπλε header bar μόνο στο Top5 */
+#top5Container::before {
+    content: "";
+    display: block;
+    height: 6px;
+    width: 100%;
+    background: #22d3ee;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px 20px 0 0;
+    z-index: 10;
+}
+
+#quizModal .modal-content,
+#fiftyModal .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    animation: fadeIn .3s ease;
+}
+
+#quizModal input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+#fiftyModal button,
+#helpBtns button,
+#quizModal button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: #0b2a33;
+    color: #fff;
+    cursor: pointer;
+    transition: .2s;
+}
+
+#fiftyModal button:hover,
+#helpBtns button:hover,
+#quizModal button:hover {
+    background: #115654;
+}
+
+#feedback {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #0b2a33;
+}
+
+#qImage {
+    display: block;
+    margin: 20px auto;
+    max-width: 400px;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+#top5Question,
+#quizQuestion {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background: none; /* Καθαρό background */
+    border-top: none; /* Καμία μπλε γραμμή */
+    padding-top: 0;
+}
+
+#top5Input,
+#quizInput {
+    width: 80%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.answer-slot {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 20px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.green { background: #2ecc71; color: white; }
+.red { background: #e74c3c; color: white; }
+.revealed { transform: scale(1.02); }
+.shake { animation: shake 0.3s; }
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+#submitBtn,
+#onePointBtn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    background: #2c3e50;
+    color: #fff;
+    cursor: pointer;
+}
+
+#onePointBtn { display: none; background: #f39c12; }
+
+#acDropdown {
+    position: absolute;
+    top: 38px;
+    left: 0;
+    width: 60%;
+    background: #0b1220;
+    border: 1px solid #22d3ee;
+    border-radius: 6px;
+    color: #fff;
+    max-height: 180px;
+    overflow-y: auto;
+    z-index: 1006;
+}
+
+#acDropdown div:hover { background: rgba(34,211,238,0.2); cursor: pointer; }
+
+.autocomplete-list {
+  position: absolute;
+  background: #5a5a5a;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  max-height: 260px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+  padding: 6px 0;
+  border: 1px solid #e0e0e0;
+}
+
+/* Custom Scrollbar */
+.autocomplete-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.autocomplete-list::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.autocomplete-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4a90e2, #357ab7);
+  border-radius: 8px;
+}
+
+.autocomplete-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5aa0f2, #468cd1);
+}
+
+.autocomplete-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.25s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.autocomplete-item:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.autocomplete-item:hover {
+  background: #838383;
+}
+
+.autocomplete-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.autocomplete-item .meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.autocomplete-item .name {
+  font-weight: 600;
+  color: #222;
+}
+
+.autocomplete-item .team {
+  font-size: 12px;
+  color: #666;
+}
+
+#hintModal {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#hintModal.show {
+    display: flex;
+    opacity: 1;
+}
+
+/* ====== FOOTER ALWAYS BOTTOM ====== */
+footer {
+  flex-shrink: 0; /* μην μικραίνει */
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 30px 15px;
+  margin-top: auto; /* κολλάει κάτω */
+}
+
+footer a {
+  color: #00ffff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+
+/* Mobile & Tablet Responsive */
+@media (max-width: 1024px) {
+    body {
+        padding: 20px;
+    }
+
+    .login-container {
+        max-width: 360px;
+    }
+
+    .login-card {
+        padding: 32px;
+        border-radius: 20px;
+    }
+
+    .login-header h2 {
+        font-size: 2rem;
+    }
+
+    .gradient-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .gradient-button {
+        height: 50px;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .divider {
+        margin: 20px 0;
+        gap: 12px;
+    }
+
+    .social-login {
+        gap: 12px;
+    }
+
+    .social-btn {
+        width: 45px;
+        height: 45px;
+        border-radius: 12px;
+    }
+
+    .signup-link p {
+        font-size: 13px;
+    }
+
+    .signup-link a {
+        font-size: 13px;
+    }
+
+    .wave {
+        width: 150%;
+        left: -25%;
+    }
+
+    .particle {
+        width: 3px;
+        height: 3px;
+    }
+
+    .input-container input {
+        padding: 16px 20px;
+        font-size: 14px;
+    }
+
+    .input-container label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .leaderboard-box {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        margin: 20px auto 0 auto;
+        width: 90%;
+    }
+    
+    .hero img {
+        max-width: 80%;
+        height: auto;
+    }
+
+    .features {
+        padding: 20px 10px;
+        gap: 15px;
+    }
+
+    .user-menu .dropdown {
+        position: relative;
+        width: 100%;
+        top: 0;
+        right: 0;
+    }
+nav {
+        padding: 0 10px; /* από 50px σε 10px */
+    }
+
+    nav .logo {
+        font-size: 24px; /* μικρότερο logo για να χωράει */
+        line-height: 60px; /* λιγότερο ύψος */
+    }
+
+    nav ul li a {
+        font-size: 16px; /* μικρότερα links */
+        line-height: 60px; /* ευθυγράμμιση με logo */
+        padding: 6px 10px;
+    }
+
+    .user-menu i {
+        font-size: 24px;
+        line-height: 60px;
+    }
+
+    nav ul ul {
+        top: 60px; /* αντί για 70px */
+    }
+    nav ul ul li a {
+        font-size: 14px; /* μικρότερα submenu links */
+        line-height: 40px; /* λιγότερο ύψος */
+        padding: 6px 10px;
+    }
+    nav ul li:hover > ul {
+  display: block;
+  opacity: 3;
+}
+}
+
+
+
+    /* Top5 autocomplete dropdown */
+
+
+
+    
